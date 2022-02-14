@@ -2,12 +2,15 @@ import React from "react";
 import { View, StatusBar, StyleSheet, Dimensions } from "react-native";
 
 import {
+  BlurMask,
   Canvas,
   Circle,
   Group,
   Oval,
   Paint,
+  RadialGradient,
   SweepGradient,
+  vec,
 } from "@shopify/react-native-skia";
 
 interface IProps {}
@@ -29,9 +32,18 @@ const App: React.FC<IProps> = () => {
 
   return (
     <Canvas style={{ flex: 1 }}>
-      <Circle c={center} r={r} color="lightblue" />
+      <Paint>
+        <RadialGradient
+          c={vec(center.x + 25, center.y)}
+          r={50}
+          colors={["lightblue", "blue"]}
+        />
+        <BlurMask sigma={20} style="solid" />
+      </Paint>
+      <Circle c={center} r={r} />
       <Paint style="stroke" strokeWidth={18}>
         <SweepGradient c={center} colors={["blue", "lightblue", "blue"]} />
+        <BlurMask sigma={20} style="solid" />
       </Paint>
       <Group>
         <Oval rect={rct} />
