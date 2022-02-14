@@ -29,16 +29,22 @@ const App: React.FC<IProps> = () => {
 
   return (
     <Canvas style={{ flex: 1 }}>
-      <Circle c={center} r={r} color="tomato" />
+      <Circle c={center} r={r} color="lightblue" />
       <Paint style="stroke" strokeWidth={18}>
-        <SweepGradient c={center} colors={["blue", "red", "blue"]} />
+        <SweepGradient c={center} colors={["blue", "lightblue", "blue"]} />
       </Paint>
       <Group>
         <Oval rect={rct} />
-        <Group transform={[{ rotate: Math.PI / 3 }]} origin={center}>
+        <Group
+          transform={[{ rotate: Math.PI / 3 }, { scale: -1 }]}
+          origin={center}
+        >
           <Oval rect={rct} />
         </Group>
-        <Group transform={[{ rotate: -Math.PI / 3 }]} origin={center}>
+        <Group
+          transform={[{ rotate: -Math.PI / 3 }, { scale: -1 }]}
+          origin={center}
+        >
           <Oval rect={rct} />
         </Group>
       </Group>
