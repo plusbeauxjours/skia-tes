@@ -1,7 +1,14 @@
 import React from "react";
 import { View, StatusBar, StyleSheet, Dimensions } from "react-native";
 
-import { Canvas, Circle, Group, Oval } from "@shopify/react-native-skia";
+import {
+  Canvas,
+  Circle,
+  Group,
+  Oval,
+  Paint,
+  SweepGradient,
+} from "@shopify/react-native-skia";
 
 interface IProps {}
 const App: React.FC<IProps> = () => {
@@ -23,7 +30,10 @@ const App: React.FC<IProps> = () => {
   return (
     <Canvas style={{ flex: 1 }}>
       <Circle c={center} r={r} color="tomato" />
-      <Group color="lightgreen" style="stroke" strokeWidth={18}>
+      <Paint style="stroke" strokeWidth={18}>
+        <SweepGradient c={center} colors={["blue", "red", "blue"]} />
+      </Paint>
+      <Group>
         <Oval rect={rct} />
         <Group transform={[{ rotate: Math.PI / 3 }]} origin={center}>
           <Oval rect={rct} />
