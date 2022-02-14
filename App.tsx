@@ -5,6 +5,7 @@ import {
   BlurMask,
   Canvas,
   Circle,
+  DashPathEffect,
   Group,
   Oval,
   Paint,
@@ -44,6 +45,7 @@ const App: React.FC<IProps> = () => {
       <Paint style="stroke" strokeWidth={18}>
         <SweepGradient c={center} colors={["blue", "lightblue", "blue"]} />
         <BlurMask sigma={20} style="solid" />
+        <DashPathEffect intervals={[10, 10]} />
       </Paint>
       <Group>
         <Oval rect={rct} />
